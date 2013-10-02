@@ -1,7 +1,7 @@
 
 see 
 
-ruby bin/kata_eight
+ruby bin/kata_eight -h
 
 e.g
 
