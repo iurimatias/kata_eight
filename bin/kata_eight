@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+
+require 'kata_eight'
+
+options = {:word_length => 6}
+op = OptionParser.new do |opts|
+
+  opts.on("-f [FILE]", "--file [FILE]", "file to read") do |file|
+    options[:file] = file
+  end
+
+  opts.on("-n [NUM]", "--word-length [NUM]", "target word length") do |word_length|
+    options[:word_length] = word_length
+  end
+
+end
+op.parse!
+
+raise OptionParser::MissingArgument if options[:file].nil?
+
+kata_eight = KataEight.new(options[:word_length].to_i)
+kata_eight.parse_file(options[:file])
+
+result = kata_eight.find_words
+kata_eight.print_result result
+
